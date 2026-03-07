@@ -1,6 +1,10 @@
-def main():
-    print("Hello from api!")
+from fastapi import FastAPI
+from routers import products
+from database import Base, engine
 
+# init db
+Base.metadata.create_all(bind=engine)
 
-if __name__ == "__main__":
-    main()
+# init api
+app = FastAPI()
+app.include_router(products.router)

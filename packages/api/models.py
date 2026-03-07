@@ -14,7 +14,7 @@ class Customer(Base):
 class Invoice(Base):
     __tablename__ = "invoice"
     id = Column(Integer, primary_key=True)
-    customerId = Column(Integer, ForeignKey("kunden.id"))
+    customerId = Column(Integer, ForeignKey("customer.id", ondelete="SET NULL"))
     date = Column(Date)
     status = Column(String)
 
@@ -29,8 +29,8 @@ class Product(Base):
 class RechnungsPosition(Base):
     __tablename__ = "rechnungs_positionen"
     id = Column(Integer, primary_key=True)
-    invoiceId = Column(Integer, ForeignKey("rechnungen.id"))
-    productId = Column(Integer, ForeignKey("produkte.id"))
+    invoiceId = Column(Integer, ForeignKey("invoice.id", ondelete="SET NULL"))
+    productId = Column(Integer, ForeignKey("product.id", ondelete="SET NULL"))
     amount = Column(Integer)
 
 class User(Base):

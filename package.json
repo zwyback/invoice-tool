@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"npm run dev --prefix packages/web\" \"uv run fastapi dev packages/api/main.py\""
+    "dev": "concurrently --names \"WEB,API\" \"npm run dev:web\" \"npm run dev:api\"",
+    "dev:web": "npm run dev --prefix packages/web",
+    "dev:api": "uv run --directory packages/api fastapi dev main.py"
   },
   "keywords": [],
   "author": "",

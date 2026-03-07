@@ -23,7 +23,7 @@ class CustomerUpdate(CustomerBase):
     city: Optional[str] = None
     adress: Optional[str] = None
 
-class Customer(CustomerBase):
+class CustomerResponse(CustomerBase):
     id: int
     
     class Config:
@@ -43,8 +43,29 @@ class InvoiceUpdate(InvoiceBase):
     status: Optional[str] = None
     customerId: Optional[int] = None
 
-class Invoice(InvoiceBase):
+class InvoiceResponse(InvoiceBase):
     customerId: int
+
+    class Config:
+        from_attributes = True
+
+# product schemas
+
+class ProductBase(BaseModel):
+    name: str
+    price: float
+    unit: str
+
+class ProductCreate(ProductBase):
+    pass
+
+class ProductUpdate(ProductBase):
+    name: Optional[str] = None
+    price: Optional[float] = None
+    unit: Optional[str] = None
+
+class ProductResponse(ProductBase):
+    id: int
 
     class Config:
         from_attributes = True

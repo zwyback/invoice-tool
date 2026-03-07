@@ -4,18 +4,15 @@ Minimal FastAPI backend for the invoicing app.
 
 Prerequisites
 
-- Python (create a virtual environment)
-- See `pyproject.toml` for dependencies
+- uv (for the API, see https://docs.astral.sh/uv/)
 
 Quick start
 
 ```bash
-cd packages/api
-python -m venv .venv
-source .venv/bin/activate
-pip install -e .
-# start the API with the FastAPI CLI (`uv`)
+uv sync
 uv run fastapi dev main.py
+# or
+npm run dev:api
 ```
 
 Notes

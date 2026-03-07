@@ -1,44 +1,33 @@
-# Invoice Tool (rechnungstool)
+# Invoice Tool
 
 A minimal monorepo for an invoicing app: a FastAPI backend and a Vite + React frontend.
 
 Prerequisites
 
 - Node.js (for the frontend and root dev scripts)
-- Python (see `packages/api/pyproject.toml` for required version and deps)
+- uv (for the API, see https://docs.astral.sh/uv/)
 
 Quick start
 
 - Install root dev deps and run both apps:
 
 ```bash
-npm install
-npm run dev
-```
-
-- Or run the repository setup to install frontend deps and sync the API with `uv`:
-
-```bash
 npm run setup
+npm run dev
 ```
 
 - Run frontend only:
 
 ```bash
-cd packages/web
-npm install
-npm run dev
+npm install --prefix packages/web
+npm run dev:web
 ```
 
-- Run API only (create/activate a venv first):
+- Run API only (with uv):
 
 ```bash
-cd packages/api
-python -m venv .venv
-source .venv/bin/activate
-pip install -e .
-# start the API with the FastAPI CLI (`uv`)
-uv run fastapi dev main.py
+uv sync --directory packages/api
+uv run --directory packages/api fastapi dev main.py
 ```
 
 Repository layout

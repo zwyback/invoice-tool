@@ -69,3 +69,23 @@ class ProductResponse(ProductBase):
 
     class Config:
         from_attributes = True
+
+# invoice item schemas
+class InvoiceItemBase(BaseModel):
+    invoice_id: int
+    product_id: int
+    quantity: int
+
+class InvoiceItemCreate(InvoiceItemBase):
+    pass
+
+class InvoiceItemUpdate(InvoiceItemBase):
+    invoiceId: Optional[int] = None
+    productId: Optional[int] = None
+    amount: Optional[int] = None
+
+class InvoiceItemResponse(InvoiceItemBase):
+    id: int
+
+    class Config:
+        from_attributes = True

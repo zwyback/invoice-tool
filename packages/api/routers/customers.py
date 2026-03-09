@@ -69,4 +69,3 @@ def delete_customer(id: int, db: Session = Depends(get_db)):
     except IntegrityError:
         db.rollback()
         raise HTTPException(status_code=400, detail=f"Customer id {id} not deleted")
-    return db_customer

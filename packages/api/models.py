@@ -26,8 +26,8 @@ class Product(Base):
     unit = Column(String)
 
 
-class RechnungsPosition(Base):
-    __tablename__ = "rechnungs_positionen"
+class InvoiceItem(Base):
+    __tablename__ = "invoice_item"
     id = Column(Integer, primary_key=True)
     invoiceId = Column(Integer, ForeignKey("invoice.id", ondelete="SET NULL"))
     productId = Column(Integer, ForeignKey("product.id", ondelete="SET NULL"))

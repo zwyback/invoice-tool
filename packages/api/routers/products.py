@@ -21,7 +21,7 @@ def get_product_by_id(id: int, db: Session = Depends(get_db)):
     product = db.query(Product).filter(Product.id == id).first()
 
     if product is None:
-        raise HTTPException(status_code=404, detail=f"Product code {id} not found")
+        raise HTTPException(status_code=404, detail=f"Product id {id} not found")
     return product
 
 @router.post("/", response_model=ProductResponse, status_code=201)
